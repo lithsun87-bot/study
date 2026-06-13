@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ปี 3 เทอมนี้</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Background blobs -->
+<div class="blobs">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+</div>
+
+<div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <span>🎓</span>
+      <div>
+        <div style="font-size:.95rem;font-weight:800">ปี 3 เทอมนี้</div>
+        <div style="font-size:.68rem;color:var(--sub);font-weight:400">Computer Science · Sem 1</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <div class="nav-label">เมนูหลัก</div>
+        <div class="nav-item active" onclick="navigate('dashboard',this)"><span class="icon">🏠</span>Dashboard</div>
+        <div class="nav-item" onclick="navigate('subjects',this)"><span class="icon">📚</span>วิชาเรียน</div>
+        <div class="nav-item" onclick="navigate('planner',this)"><span class="icon">📅</span>Planner</div>
+        <div class="nav-item" onclick="navigate('revision',this)"><span class="icon">🔄</span>Revision Tracker</div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">เครื่องมือ</div>
+        <div class="nav-item" onclick="navigate('notes',this)"><span class="icon">📝</span>Notes</div>
+        <div class="nav-item" onclick="navigate('stats',this)"><span class="icon">📊</span>Statistics</div>
+        <div class="nav-item" onclick="navigate('focus',this)"><span class="icon">🎯</span>Focus Mode</div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">ระบบ</div>
+        <div class="nav-item" onclick="navigate('settings',this)"><span class="icon">⚙️</span>Settings</div>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="avatar-sm">TK</div>
+        <div class="user-info">
+          <div class="user-name">Tanakorn K.</div>
+          <div class="user-role">วิทยาการข้อมูล ปี 3</div>
+        </div>
+        <span style="color:var(--sub);font-size:.8rem">⋯</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="hamburger" onclick="toggleSidebar()" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="topbar-time" id="clock">⏰ --:--:--</div>
+      <div class="topbar-search">
+        <span style="color:var(--sub);font-size:.9rem">🔍</span>
+        <input type="text" placeholder="ค้นหาวิชา, Note, งาน...">
+      </div>
+      <div class="topbar-right">
+        <div class="streak-badge">🔥 12 วัน</div>
+        <div class="notif-btn">🔔<div class="notif-dot"></div></div>
+        <div class="avatar-lg" title="Tanakorn K.">TK</div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <!-- ══════════ DASHBOARD ══════════ -->
+      <div class="page active" id="page-dashboard">
+        <!-- Welcome Card -->
+        <div class="welcome-card">
+          <svg width="0" height="0"><defs><linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#5B8CFF"/><stop offset="100%" stop-color="#8B5CF6"/></linearGradient></defs></svg>
+          <div class="welcome-title">สวัสดี Tanakorn <span class="wave">👋</span></div>
+          <div class="welcome-sub">"อ่านวันนี้ เพื่อไม่เร่งคืนก่อนสอบ"</div>
+          <div class="welcome-meta">
+            <div class="meta-item">
+              <span class="meta-label">เป้าหมายวันนี้</span>
+              <span class="meta-val primary">4 ชั่วโมง</span>
+              <div class="progress-mini"><div class="progress-mini-fill" style="width:62%"></div></div>
+              <span style="font-size:.68rem;color:var(--sub);margin-top:3px;display:block">2.5 / 4 ชั่วโมง</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">ความคืบหน้าสัปดาห์นี้</span>
+              <span class="meta-val success">74%</span>
+              <div class="progress-mini"><div class="progress-mini-fill" style="width:74%;background:linear-gradient(90deg,#22C55E,#5B8CFF)"></div></div>
+              <span style="font-size:.68rem;color:var(--sub);margin-top:3px;display:block">18.5 / 25 ชั่วโมง</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">ชั่วโมงรวมทั้งหมด</span>
+              <span class="meta-val" style="color:#F59E0B"><span class="count-up" data-target="124">0</span> ชม.</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">วันที่เหลือถึงสอบ</span>
+              <span class="meta-val" style="color:#EF4444">42 วัน</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-glow" style="background:#5B8CFF"></div>
+            <span class="stat-icon">📚</span>
+            <div class="stat-label">Total Subjects</div>
+            <div class="stat-value" style="color:var(--primary)">7</div>
+            <div class="stat-sub">วิชาทั้งหมดในเทอมนี้</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-glow" style="background:#F59E0B"></div>
+            <span class="stat-icon">🔥</span>
+            <div class="stat-label">Reading Streak</div>
+            <div class="stat-value" style="color:#F59E0B"><span class="count-up" data-target="12">0</span></div>
+            <div class="stat-sub">วันติดต่อกัน</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-glow" style="background:#22C55E"></div>
+            <span class="stat-icon">⏱</span>
+            <div class="stat-label">Study Hours</div>
+            <div class="stat-value" style="color:var(--success)"><span class="count-up" data-target="124">0</span></div>
+            <div class="stat-sub">ชั่วโมงทั้งหมด</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-glow" style="background:#8B5CF6"></div>
+            <span class="stat-icon">🎯</span>
+            <div class="stat-label">Completion</div>
+            <div class="stat-value" style="color:var(--secondary)"><span class="count-up" data-target="68">0</span>%</div>
+            <div class="stat-sub">ความสำเร็จโดยรวม</div>
+          </div>
+        </div>
+
+        <!-- Bottom Grid -->
+        <div class="bottom-grid">
+          <!-- TODAY'S MISSION -->
+          <div class="glass mission-card">
+            <div class="card-title">📋 Today's Mission <span style="margin-left:auto;font-size:.72rem;background:var(--primary-soft);color:var(--primary);padding:3px 10px;border-radius:8px">วันเสาร์</span></div>
+            <div class="card-sub">เป้าหมายการเรียนรู้ประจำวัน</div>
+            <div class="task-list" id="missionTasks">
+              <div class="task-item done" onclick="toggleTask(this)">
+                <div class="task-check">✓</div>
+                <div class="task-text">AI สำหรับวิทยาการข้อมูล — บทที่ 5</div>
+                <span class="task-badge">✅ Done</span>
+              </div>
+              <div class="task-item" onclick="toggleTask(this)">
+                <div class="task-check"></div>
+                <div class="task-text">คณิตศาสตร์และสถิติ — Hypothesis Testing</div>
+                <span class="task-badge" style="background:var(--secondary-soft);color:#A78BFA">📚 Learn</span>
+              </div>
+              <div class="task-item" onclick="toggleTask(this)">
+                <div class="task-check"></div>
+                <div class="task-text">วิเคราะห์และออกแบบระบบ — DFD Diagrams</div>
+                <span class="task-badge" style="background:rgba(245,158,11,0.12);color:#F59E0B">⚡ Hard</span>
+              </div>
+              <div class="task-item" onclick="toggleTask(this)">
+                <div class="task-check"></div>
+                <div class="task-text">ทบทวน AI — Neural Networks</div>
+                <span class="task-badge" style="background:var(--success-soft);color:var(--success)">🔄 Review</span>
+              </div>
+            </div>
+            <div class="prog-bar-wrap"><div class="prog-bar-fill" id="missionProg" style="width:25%"></div></div>
+            <div class="prog-label"><span id="missionProgText">1 / 4 งานเสร็จ</span><span style="color:var(--primary)">25%</span></div>
+          </div>
+
+          <!-- RIGHT PANEL -->
+          <div class="quick-stats">
+            <div class="streak-card glass">
+              <span class="streak-fire">🔥</span>
+              <div class="streak-num">12</div>
+              <div class="streak-label">วันติดต่อกัน • Personal Best!</div>
+            </div>
+            <div class="goal-card">
+              <div class="goal-title">🎯 เป้าหมายสัปดาห์</div>
+              <div class="goal-ring-wrap">
+                <div class="goal-ring">
+                  <svg viewBox="0 0 80 80"><circle class="bg-ring" cx="40" cy="40" r="34"/><circle class="fill-ring" cx="40" cy="40" r="34" stroke="url(#ringGrad)" stroke-dasharray="213.63" stroke-dashoffset="55.5"/></svg>
+                  <div class="goal-ring-text">74%</div>
+                </div>
+              </div>
+              <div class="goal-items">
+                <div class="goal-item"><span class="goal-item-label">เป้าหมาย</span><span class="goal-item-val">25 ชม./สัปดาห์</span></div>
+                <div class="goal-item"><span class="goal-item-label">ทำได้แล้ว</span><span class="goal-item-val" style="color:var(--success)">18.5 ชม.</span></div>
+                <div class="goal-item"><span class="goal-item-label">เหลืออีก</span><span class="goal-item-val" style="color:#F59E0B">6.5 ชม.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════ SUBJECTS ══════════ -->
+      <div class="page" id="page-subjects">
+        <div class="page-header">
+          <div><div class="page-title">📚 วิชาเรียน</div><div class="page-sub">7 วิชา · เทอมปัจจุบัน</div></div>
+          <button class="btn btn-primary" onclick="navigate('focus',document.querySelector('[onclick*=focus]'))">🎯 Focus Mode</button>
+        </div>
+        <div class="subjects-grid" id="subjectsGrid"></div>
+      </div>
+
+      <!-- ══════════ PLANNER ══════════ -->
+      <div class="page" id="page-planner">
+        <div class="page-header">
+          <div><div class="page-title">📅 Weekly Planner</div><div class="page-sub">วางแผนการเรียนรายสัปดาห์</div></div>
+          <button class="btn btn-ghost">ส่งออก PDF</button>
+        </div>
+        <div class="week-grid" id="weekGrid"></div>
+        <div class="planner-tasks-section">
+          <div class="card-title" style="margin-bottom:16px">📝 งานทั้งหมด <span style="margin-left:auto;font-size:.75rem;color:var(--sub);font-weight:400">เพิ่มงานใหม่ได้เลย</span></div>
+          <div class="planner-input-row">
+            <input class="planner-input" id="plannerInput" placeholder="เพิ่มงานใหม่... เช่น อ่านบทที่ 3 AI" onkeydown="if(event.key==='Enter')addPlannerTask()">
+            <select class="planner-input" id="plannerSubject" style="max-width:180px">
+              <option value="">เลือกวิชา</option>
+              <option>🤖 AI</option><option>📊 Statistics</option><option>🧠 System Analysis</option>
+              <option>📈 DSS</option><option>🤖 Robotics</option><option>📱 Digital Marketing</option><option>🗂 Info Storage</option>
+            </select>
+            <button class="btn btn-primary" onclick="addPlannerTask()">+ เพิ่ม</button>
+          </div>
+          <div class="planner-task-list" id="plannerTaskList"></div>
+        </div>
+      </div>
+
+      <!-- ══════════ REVISION ══════════ -->
+      <div class="page" id="page-revision">
+        <div class="page-header">
+          <div><div class="page-title">🔄 Revision Tracker</div><div class="page-sub">ติดตามการทบทวนตาม Spaced Repetition</div></div>
+          <button class="btn btn-primary" onclick="markAllRevision()">✓ Mark Today</button>
+        </div>
+        <div class="revision-table-wrap">
+          <table class="rev-table">
+            <thead><tr>
+              <th>วิชา</th><th>อ่านครั้งแรก</th><th>1 วัน</th><th>3 วัน</th><th>7 วัน</th><th>14 วัน</th><th>สถานะ</th>
+            </tr></thead>
+            <tbody id="revisionBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════ NOTES ══════════ -->
+      <div class="page" id="page-notes">
+        <div class="page-header">
+          <div><div class="page-title">📝 Notes</div><div class="page-sub">บันทึกย่อและสรุปเนื้อหา</div></div>
+          <button class="btn btn-primary" onclick="createNote()">+ สร้าง Note</button>
+        </div>
+        <div class="notes-toolbar">
+          <div class="notes-search"><span style="color:var(--sub)">🔍</span><input type="text" placeholder="ค้นหา Note..." oninput="filterNotes(this.value)"></div>
+          <button class="btn btn-ghost" style="white-space:nowrap">🗂 ทั้งหมด</button>
+          <button class="btn btn-ghost" style="white-space:nowrap">⭐ Starred</button>
+        </div>
+        <div class="notes-grid" id="notesGrid"></div>
+      </div>
+
+      <!-- ══════════ STATISTICS ══════════ -->
+      <div class="page" id="page-stats">
+        <div class="page-header">
+          <div><div class="page-title">📊 Statistics</div><div class="page-sub">ภาพรวมความคืบหน้าการเรียน</div></div>
+        </div>
+        <div class="stats-row">
+          <div class="stats-summary-card glass"><span class="stats-summary-icon">⏱</span><div class="stats-summary-val" style="color:var(--primary)">124</div><div class="stats-summary-label">ชั่วโมงรวม</div></div>
+          <div class="stats-summary-card glass"><span class="stats-summary-icon">📅</span><div class="stats-summary-val" style="color:var(--success)">18.5</div><div class="stats-summary-label">ชม. สัปดาห์นี้</div></div>
+          <div class="stats-summary-card glass"><span class="stats-summary-icon">🔥</span><div class="stats-summary-val" style="color:#F59E0B">12</div><div class="stats-summary-label">Streak วัน</div></div>
+          <div class="stats-summary-card glass"><span class="stats-summary-icon">🎯</span><div class="stats-summary-val" style="color:var(--secondary)">68%</div><div class="stats-summary-label">Completion</div></div>
+        </div>
+        <div class="charts-grid">
+          <div class="chart-card">
+            <div class="chart-title">📈 ชั่วโมงเรียนรายสัปดาห์</div>
+            <div class="chart-sub">7 วันล่าสุด</div>
+            <div class="chart-wrap"><canvas id="weeklyChart"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-title">📊 Completion รายวิชา</div>
+            <div class="chart-sub">ความคืบหน้าแต่ละวิชา</div>
+            <div class="chart-wrap"><canvas id="subjectChart"></canvas></div>
+          </div>
+        </div>
+        <div class="charts-grid">
+          <div class="chart-card">
+            <div class="chart-title">📆 ชั่วโมงเรียนรายเดือน</div>
+            <div class="chart-sub">4 เดือนล่าสุด</div>
+            <div class="chart-wrap"><canvas id="monthlyChart"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-title">🔥 Study Streak</div>
+            <div class="chart-sub">กิจกรรมรายวัน 4 สัปดาห์</div>
+            <div class="chart-wrap"><canvas id="streakChart"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════ FOCUS MODE ══════════ -->
+      <div class="page" id="page-focus">
+        <div class="page-header">
+          <div><div class="page-title">🎯 Focus Mode</div><div class="page-sub">Pomodoro Timer · ไม่มีสิ่งรบกวน</div></div>
+          <select class="planner-input" id="focusSubjectSelect" style="max-width:220px;background:var(--glass);border:1px solid var(--border);border-radius:12px;padding:9px 14px;color:var(--text);font-family:Inter;font-size:.85rem;outline:none">
+            <option>🤖 AI สำหรับวิทยาการข้อมูล</option>
+            <option>📊 คณิตศาสตร์และสถิติ</option>
+            <option>🧠 วิเคราะห์และออกแบบระบบ</option>
+            <option>📈 ระบบสนับสนุนการตัดสินใจ</option>
+            <option>🤖 Robotics</option>
+            <option>📱 Digital Marketing</option>
+            <option>🗂 Information Storage</option>
+          </select>
+        </div>
+        <div class="focus-layout">
+          <div class="focus-main">
+            <div class="focus-subject-label">FOCUSING ON</div>
+            <div class="focus-subject-name" id="focusSubjectName">🤖 AI สำหรับวิทยาการข้อมูล</div>
+            <div class="pomodoro-dots" id="pomoDots">
+              <div class="pomo-dot active"></div><div class="pomo-dot"></div><div class="pomo-dot"></div><div class="pomo-dot"></div>
+            </div>
+            <div class="timer-display" id="timerDisplay">25:00</div>
+            <div class="timer-controls">
+              <button class="timer-btn start" id="timerStartBtn" onclick="toggleTimer()">▶ เริ่ม</button>
+              <button class="timer-btn reset" onclick="resetTimer()">↺ รีเซ็ต</button>
+            </div>
+            <div class="prog-bar-wrap" style="max-width:360px;margin:0 auto 16px"><div class="prog-bar-fill" id="timerProg" style="width:0%"></div></div>
+            <div class="focus-info" id="focusInfo">Pomodoro 1 จาก 4 · พัก 5 นาทีหลังเสร็จ</div>
+          </div>
+          <div class="focus-sidebar">
+            <div class="focus-task-card">
+              <div class="card-title" style="margin-bottom:14px">📋 งานในเซสชั่นนี้</div>
+              <div class="task-list" id="focusTasks">
+                <div class="task-item done" onclick="toggleTask(this)"><div class="task-check">✓</div><div class="task-text">อ่าน Chapter 5 — Neural Networks</div></div>
+                <div class="task-item" onclick="toggleTask(this)"><div class="task-check"></div><div class="task-text">ทำแบบฝึกหัด Back-propagation</div></div>
+                <div class="task-item" onclick="toggleTask(this)"><div class="task-check"></div><div class="task-text">สรุป Key Concepts</div></div>
+              </div>
+            </div>
+            <div class="focus-task-card">
+              <div class="card-title" style="margin-bottom:14px">📊 เซสชั่นวันนี้</div>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div style="display:flex;justify-content:space-between;font-size:.83rem"><span style="color:var(--sub)">Pomodoros สำเร็จ</span><span style="font-weight:700;color:var(--primary)">3 / 4</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:.83rem"><span style="color:var(--sub)">เวลาเรียนวันนี้</span><span style="font-weight:700;color:var(--success)">2.5 ชม.</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:.83rem"><span style="color:var(--sub)">เป้าหมาย</span><span style="font-weight:700">4 ชม.</span></div>
+                <div class="prog-bar-wrap"><div class="prog-bar-fill" style="width:62.5%"></div></div>
+              </div>
+            </div>
+            <div class="focus-task-card">
+              <div class="card-title" style="margin-bottom:14px">🔇 สภาพแวดล้อม</div>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div class="setting-row" style="padding:8px 0"><div class="setting-label" style="font-size:.83rem">Do Not Disturb</div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+                <div class="setting-row" style="padding:8px 0"><div class="setting-label" style="font-size:.83rem">เสียง White Noise</div><label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label></div>
+                <div class="setting-row" style="padding:8px 0;border:none"><div class="setting-label" style="font-size:.83rem">แจ้งเตือนเมื่อครบ</div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════ SETTINGS ══════════ -->
+      <div class="page" id="page-settings">
+        <div class="page-header">
+          <div><div class="page-title">⚙️ Settings</div><div class="page-sub">จัดการโปรไฟล์และการตั้งค่า</div></div>
+          <button class="btn btn-primary">💾 บันทึก</button>
+        </div>
+        <div class="settings-grid">
+          <div class="settings-section">
+            <div class="settings-title">👤 ข้อมูลโปรไฟล์</div>
+            <div style="text-align:center;margin-bottom:20px">
+              <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:800;margin:0 auto 12px">TK</div>
+              <div style="font-size:.95rem;font-weight:700">Tanakorn K.</div>
+              <div style="font-size:.78rem;color:var(--sub)">วิทยาการข้อมูล ปี 3 · คณะวิทยาการและเทคโนโลยี</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div><div style="font-size:.73rem;color:var(--sub);margin-bottom:5px;font-weight:600">ชื่อ</div><input class="planner-input" value="Tanakorn K." style="width:100%"></div>
+              <div><div style="font-size:.73rem;color:var(--sub);margin-bottom:5px;font-weight:600">รหัสนักศึกษา</div><input class="planner-input" value="64XXXXXXXX" style="width:100%"></div>
+              <div><div style="font-size:.73rem;color:var(--sub);margin-bottom:5px;font-weight:600">อีเมล</div><input class="planner-input" value="tanakorn@student.ac.th" style="width:100%"></div>
+            </div>
+          </div>
+          <div class="settings-section">
+            <div class="settings-title">🎯 เป้าหมายการเรียน</div>
+            <div class="setting-row"><div><div class="setting-label">เป้าหมายรายวัน</div><div class="setting-desc">จำนวนชั่วโมงที่ต้องการต่อวัน</div></div><input class="planner-input" value="4" style="width:60px;text-align:center"></div>
+            <div class="setting-row"><div><div class="setting-label">เป้าหมายรายสัปดาห์</div><div class="setting-desc">ชั่วโมงเรียนต่อสัปดาห์</div></div><input class="planner-input" value="25" style="width:60px;text-align:center"></div>
+            <div class="setting-row"><div><div class="setting-label">ระยะเวลา Pomodoro</div><div class="setting-desc">นาที</div></div><input class="planner-input" value="25" style="width:60px;text-align:center"></div>
+            <div class="setting-row" style="border:none"><div><div class="setting-label">ระยะเวลาพัก</div><div class="setting-desc">นาที</div></div><input class="planner-input" value="5" style="width:60px;text-align:center"></div>
+          </div>
+          <div class="settings-section">
+            <div class="settings-title">🔔 การแจ้งเตือน</div>
+            <div class="setting-row"><div><div class="setting-label">แจ้งเตือนทบทวน</div><div class="setting-desc">Spaced repetition reminders</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+            <div class="setting-row"><div><div class="setting-label">Daily Goal Reminder</div><div class="setting-desc">เตือนเป้าหมายประจำวัน</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+            <div class="setting-row"><div><div class="setting-label">Study Streak Alert</div><div class="setting-desc">แจ้งเตือนถ้า Streak จะหาย</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+            <div class="setting-row" style="border:none"><div><div class="setting-label">Weekly Report</div><div class="setting-desc">สรุปรายสัปดาห์</div></div><label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label></div>
+          </div>
+          <div class="settings-section">
+            <div class="settings-title">🎨 การแสดงผล</div>
+            <div class="setting-row"><div><div class="setting-label">Animations</div><div class="setting-desc">เอฟเฟกต์เคลื่อนไหว</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+            <div class="setting-row"><div><div class="setting-label">Glassmorphism Effects</div><div class="setting-desc">เอฟเฟกต์กระจก</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+            <div class="setting-row"><div><div class="setting-label">Compact Mode</div><div class="setting-desc">แสดงผลแบบกระชับ</div></div><label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label></div>
+            <div class="setting-row" style="border:none"><div><div class="setting-label">Show Study Tips</div><div class="setting-desc">แสดงเคล็ดลับการเรียน</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<script src="js/script.js"></script>
+</body>
+</html>
