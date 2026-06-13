@@ -624,5 +624,4 @@ setTimeout(()=>{
     setTimeout(()=>el.style.transition='width 1.2s cubic-bezier(.4,0,.2,1)',50);
     setTimeout(()=>el.style.width=w,100);
   });
->>>>>>> lithsun87/main
 },200);
