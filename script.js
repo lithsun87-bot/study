@@ -1,5 +1,3 @@
-<<<<<<< HEAD 
-// ─── DATA ───────────────────────────────────────────────
 const subjects = [
   {icon:'🤖',name:'AI สำหรับวิทยาการข้อมูล',code:'CS301',progress:72,hours:28,lastReview:'วันนี้',color:'#5B8CFF',bg:'rgba(91,140,255,0.15)'},
   {icon:'📊',name:'คณิตศาสตร์และสถิติ',code:'MA201',progress:55,hours:22,lastReview:'เมื่อวาน',color:'#8B5CF6',bg:'rgba(139,92,246,0.15)'},
