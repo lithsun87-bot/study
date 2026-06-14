@@ -44,8 +44,8 @@
     width:var(--sidebar-w);
     min-height:100vh;
     background:rgba(255,255,255,0.04);
-    backdrop-filter:blur(40px);
-    -webkit-backdrop-filter:blur(40px);
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
     border-right:1px solid var(--border);
     display:flex;flex-direction:column;
     position:fixed;top:0;left:0;height:100%;
