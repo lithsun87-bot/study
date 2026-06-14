@@ -28,6 +28,31 @@
     -webkit-font-smoothing:antialiased;
   }
 
+  #slide-panel {
+    position: fixed;
+    top: 0; right: 0;
+    width: 400px; height: 100%;
+    background: #111;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 200;
+  }
+
+  #slide-panel.open {
+    transform: translateX(0);
+  }
+
+  #panel-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,5);
+    z-index: 199;
+  }
+
+  #panel-overlay.show {
+    display: block;
+  }
+  
   /* ─── BACKGROUND BLOBS ─── */
   .blobs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
   .blob{position:absolute;border-radius:50%;filter:blur(120px);opacity:0.18;animation:blobFloat 18s ease-in-out infinite alternate}

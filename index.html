@@ -10,6 +10,13 @@
 </head>
 <body>
 
+<!-- overlay -->
+<div id="panel-overlay" onclick="openPanel()"></div>
+
+<!-- Slide-in Panel -->
+<div id="slide-panel">
+  <div id="panel-content"></div>
+</div>
 <!-- Background blobs -->
 <div class="blobs">
   <div class="blob blob1"></div>
@@ -17,7 +24,7 @@
   <div class="blob blob3"></div>
 </div>
 
-<div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
+<div class="sidebar-overlay" id="overlay" onclick="openPanel()"></div>
 
 <div class="app">
   <!-- SIDEBAR -->
