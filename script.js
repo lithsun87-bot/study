@@ -463,13 +463,6 @@ function createNote(){
 }
 buildNotes();
 
-// ─── CHARTS ──────────────────────────────────────────────
-let chartsInit=false;
-function initCharts(){
-  if(chartsInit)return;chartsInit=true;
-  const gridOpts={color:'rgba(255,255,255,0.05)'},tickOpts={color:'#94A3B8',font:{family:'Inter',size:11}};
-  const tooltipStyle={backgroundColor:'rgba(15,17,25,0.95)',borderColor:'rgba(255,255,255,0.12)',borderWidth:1,titleColor:'#fff',bodyColor:'#94A3B8',padding:10,cornerRadius:10,titleFont:{family:'Inter',weight:'700'},bodyFont:{family:'Inter'}};
-
   // Weekly
   new Chart(document.getElementById('weeklyChart'),{type:'bar',data:{
     labels:['จ','อ','พ','พฤ','ศ','ส','อา'],
@@ -495,7 +488,6 @@ function initCharts(){
     labels:streakLabels,
     datasets:[{label:'ชั่วโมง',data:streakData,backgroundColor:streakData.map(v=>v===0?'rgba(255,255,255,0.05)':v>=3?'rgba(34,197,94,0.8)':v>=2?'rgba(91,140,255,0.7)':'rgba(91,140,255,0.35)'),borderRadius:4,borderSkipped:false}]
   },options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tooltipStyle},scales:{x:{grid:{display:false},ticks:{...tickOpts,maxTicksLimit:14}},y:{display:false}}}});
-}
 
 // ─── POMODORO TIMER ──────────────────────────────────────
 let timerSeconds=25*60,timerRunning=false,timerInterval=null;
