@@ -412,12 +412,6 @@ function buildWeekGrid(){
 }
 buildWeekGrid();
 
-// ─── PLANNER TASKS ───────────────────────────────────────
-let plannerTasks=[
-  {text:'ทำแบบฝึกหัด Neural Network',subject:'🤖 AI',done:false},
-  {text:'อ่าน Hypothesis Testing',subject:'📊 Statistics',done:true},
-  {text:'วาด DFD Level 1',subject:'🧠 System Analysis',done:false},
-];
 function renderPlannerTasks(){
   const list=document.getElementById('plannerTaskList');
   list.innerHTML=plannerTasks.map((t,i)=>`
