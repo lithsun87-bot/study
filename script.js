@@ -313,17 +313,6 @@ setTimeout(()=>{
 
 },200);
 
-// ─── DATA ───────────────────────────────────────────────
-const subjects = [
-  {icon:'🤖',name:'AI สำหรับวิทยาการข้อมูล',code:'CS301',progress:72,hours:28,lastReview:'วันนี้',color:'#5B8CFF',bg:'rgba(91,140,255,0.15)'},
-  {icon:'📊',name:'คณิตศาสตร์และสถิติ',code:'MA201',progress:55,hours:22,lastReview:'เมื่อวาน',color:'#8B5CF6',bg:'rgba(139,92,246,0.15)'},
-  {icon:'🧠',name:'วิเคราะห์และออกแบบระบบ',code:'CS302',progress:80,hours:18,lastReview:'2 วันที่แล้ว',color:'#22C55E',bg:'rgba(34,197,94,0.15)'},
-  {icon:'📈',name:'ระบบสนับสนุนการตัดสินใจ',code:'CS303',progress:45,hours:14,lastReview:'3 วันที่แล้ว',color:'#F59E0B',bg:'rgba(245,158,11,0.15)'},
-  {icon:'🤖',name:'Robotics & Automation',code:'CS304',progress:60,hours:16,lastReview:'เมื่อวาน',color:'#EF4444',bg:'rgba(239,68,68,0.15)'},
-  {icon:'📱',name:'Digital Marketing Analytics',code:'MK201',progress:90,hours:20,lastReview:'วันนี้',color:'#06B6D4',bg:'rgba(6,182,212,0.15)'},
-  {icon:'🗂',name:'Information Storage & Retrieval',code:'CS305',progress:35,hours:6,lastReview:'5 วันที่แล้ว',color:'#A78BFA',bg:'rgba(167,139,250,0.15)'},
-];
-
 const weekDays = [
   {name:'จ',full:'จันทร์',subjects:['🤖 AI'],pills:['primary']},
   {name:'อ',full:'อังคาร',subjects:['📊 Math'],pills:['purple']},
