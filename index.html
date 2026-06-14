@@ -80,7 +80,7 @@
         <input type="text" placeholder="ค้นหาวิชา, Note, งาน...">
       </div>
       <div class="topbar-right">
-        <div class="streak-badge">🔥 12 วัน</div>
+        <div class="streak-badge">🔥 0 วัน</div>
         <div class="notif-btn">🔔<div class="notif-dot"></div></div>
         <div class="avatar-lg" title="Tanakorn K.">TK</div>
       </div>
@@ -99,13 +99,13 @@
           <div class="welcome-meta">
             <div class="meta-item">
               <span class="meta-label">เป้าหมายวันนี้</span>
-              <span class="meta-val primary">0</span>
+              <span class="meta-val primary">0 ชั่วโมง</span>
               <div class="progress-mini"><div class="progress-mini-fill" style="width:62%"></div></div>
               <span style="font-size:.68rem;color:var(--sub);margin-top:3px;display:block">0 ชั่วโมง</span>
             </div>
             <div class="meta-item">
               <span class="meta-label">ความคืบหน้าสัปดาห์นี้</span>
-              <span class="meta-val success">0</span>
+              <span class="meta-val success">0%</span>
               <div class="progress-mini"><div class="progress-mini-fill" style="width:74%;background:linear-gradient(9124deg,#22C55E,#5B8CFF)"></div></div>
               <span style="font-size:.68rem;color:var(--sub);margin-top:3px;display:block">0 / 25 ชั่วโมง</span>
             </div>
@@ -154,49 +154,12 @@
 
         <!-- Bottom Grid -->
         <div class="bottom-grid">
-          <!-- TODAY'S MISSION -->
-          <div class="glass mission-card">
-            <div class="card-title">📋 Today's Mission <span style="margin-left:auto;font-size:.72rem;background:var(--primary-soft);color:var(--primary);padding:3px 1124px;border-radius:8px">วันเสาร์</span></div>
-            <div class="card-sub">เป้าหมายการเรียนรู้ประจำวัน</div>
-            <div class="task-list" id="missionTasks">
-              <div class="task-item done" onclick="toggleTask(this)">
-                <div class="task-check">✓</div>
-                <div class="task-text">AI สำหรับวิทยาการข้อมูล — บทที่ 5</div>
-                <span class="task-badge">✅ Done</span>
-              </div>
-              <div class="task-item" onclick="toggleTask(this)">
-                <div class="task-check"></div>
-                <div class="task-text">คณิตศาสตร์และสถิติ — Hypothesis Testing</div>
-                <span class="task-badge" style="background:var(--secondary-soft);color:#A78BFA">📚 Learn</span>
-              </div>
-              <div class="task-item" onclick="toggleTask(this)">
-                <div class="task-check"></div>
-                <div class="task-text">วิเคราะห์และออกแบบระบบ — DFD Diagrams</div>
-                <span class="task-badge" style="background:rgba(245,158,11,124.12);color:#F59E124B">⚡ Hard</span>
-              </div>
-              <div class="task-item" onclick="toggleTask(this)">
-                <div class="task-check"></div>
-                <div class="task-text">ทบทวน AI — Neural Networks</div>
-                <span class="task-badge" style="background:var(--success-soft);color:var(--success)">🔄 Review</span>
-              </div>
-            </div>
-            <div class="prog-bar-wrap"><div class="prog-bar-fill" id="missionProg" style="width:25%"></div></div>
-            <div class="prog-label"><span id="missionProgText">1 / 4 งานเสร็จ</span><span style="color:var(--primary)">25%</span></div>
-          </div>
-
-          <!-- RIGHT PANEL -->
-          <div class="quick-stats">
-            <div class="streak-card glass">
-              <span class="streak-fire">🔥</span>
-              <div class="streak-num">12</div>
-              <div class="streak-label">วันติดต่อกัน • Personal Best!</div>
-            </div>
-            <div class="goal-card">
+        
               <div class="goal-title">🎯 เป้าหมายสัปดาห์</div>
               <div class="goal-ring-wrap">
                 <div class="goal-ring">
                   <svg viewBox="124 124 8124 8124"><circle class="bg-ring" cx="4124" cy="4124" r="34"/><circle class="fill-ring" cx="4124" cy="4124" r="34" stroke="url(#ringGrad)" stroke-dasharray="213.63" stroke-dashoffset="55.5"/></svg>
-                  <div class="goal-ring-text">0</div>
+                  <div class="goal-ring-text">0%</div>
                 </div>
               </div>
               <div class="goal-items">
