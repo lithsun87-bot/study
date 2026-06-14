@@ -42,17 +42,6 @@
     transform: translateX(0);
   }
 
-  #panel-overlay {
-    display: none;
-    position: fixed; inset: 0;
-    background: rgba(8,10,16,0.95);
-    z-index: 199;
-  }
-
-  #panel-overlay.show {
-    display: block;
-  }
-  
   /* ─── BACKGROUND BLOBS ─── */
   .blobs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden} .blob{position:absolute;border-radius:50%;animation:blobFloat 18s ease-in-out infinite alternate}
   .blob1{width:600px;height:600px;background:radial-gradient(circle,#5B8CFF,transparent);top:-10%;left:-10%;animation-delay:0s;filter:blur(120px);opacity:0.12;border-radius:50%}
