@@ -154,9 +154,15 @@
       <div class="page" id="page-subjects">
         <div class="page-header">
           <div><div class="page-title">📚 วิชาเรียน</div><div class="page-sub">7 วิชา · เทอมปัจจุบัน</div></div>
-          <button class="btn btn-primary" onclick="navigate('focus',document.querySelector('[onclick*=focus]'))">🎯 Focus Mode</button>
+          <button class="btn btn-primary" onclick="openAddSubject()">➕ เพิ่มวิชา</button>
         </div>
-        <div class="subjects-grid" id="subjectsGrid"></div>
+        <div class="subject-layout">
+          <div class="subjects-grid" id="subjectsGrid"></div>
+          <div class="subject-detail glass" id="subjectDetail">
+            <div class="subject-detail-empty">
+              📚 เลือกวิชาเพื่อดูรายละเอียด
+          </div>
+        </div>
       </div>
 
       <!-- ══════════ PLANNER ══════════ -->
@@ -355,6 +361,28 @@
   </div><!-- /main -->
 </div><!-- /app -->
 
+<div id="subjectModal" class="subject-modal">
+
+  <div class="subject-modal-box">
+
+    <h2>เพิ่มวิชาเรียน</h2>
+
+    <input id="subName" placeholder="ชื่อวิชา">
+
+    <input id="subCode" placeholder="รหัสวิชา">
+
+    <input id="subProgress"
+           type="number"
+           placeholder="ความคืบหน้า %">
+
+    <button onclick="saveSubject()">
+      บันทึก
+    </button>
+
+  </div>
+
+</div>
+            
 <script src="script.js"></script>
 </body>
 </html>

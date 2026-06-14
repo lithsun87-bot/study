@@ -79,6 +79,7 @@ function buildSubjects(){
   const grid=document.getElementById('subjectsGrid');
   grid.innerHTML=subjects.map(s=>`
     <div class="subject-card">
+         onclick="showSubject('${s.code}')">
       <div class="subject-glow" style="background:${s.color}"></div>
       <div class="subject-icon-wrap" style="background:${s.bg};">${s.icon}</div>
       <div class="subject-name">${s.name}</div>
@@ -282,3 +283,45 @@ setTimeout(()=>{
     setTimeout(()=>el.style.width=w,100);
   });
 },200);
+
+function showSubject(code){
+
+  const subject = subjects.find(
+    s => s.code === code
+  );
+
+  if(!subject) return;
+
+  document.getElementById('subjectDetail').innerHTML = `
+
+    <h2>${subject.icon} ${subject.name}</h2>
+
+    <p style="color:var(--sub)">
+      ${subject.code}
+    </p>
+
+    <div class="subject-progress">
+      ${subject.progress}%
+    </div>
+
+    <div class="subject-meta">
+
+      <div class="subject-meta-item">
+        <span>เรียนแล้ว</span>
+        <strong>${subject.hours} ชม.</strong>
+      </div>
+
+      <div class="subject-meta-item">
+        <span>อ่านล่าสุด</span>
+        <strong>${subject.lastReview}</strong>
+      </div>
+
+      <div class="subject-meta-item">
+        <span>ความคืบหน้า</span>
+        <strong>${subject.progress}%</strong>
+      </div>
+
+    </div>
+
+  `;
+}
