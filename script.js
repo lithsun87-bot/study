@@ -47,16 +47,6 @@ function navigate(page, el) {
   closeSidebar();
 }
 
-// ─── SIDEBAR MOBILE ───────────────────────────────────────
-function toggleSidebar(){
-  document.getElementById('sidebar').classList.toggle('open');
-  document.getElementById('overlay').classList.toggle('show');
-}
-function closeSidebar(){
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('overlay').classList.remove('show');
-}
-
 // ─── CLOCK ───────────────────────────────────────────────
 function updateClock(){
   const now=new Date();
@@ -321,16 +311,6 @@ function navigate(page, el) {
   if(el) el.classList.add('active');
   if(page==='stats') initCharts();
   closeSidebar();
-}
-
-// ─── SIDEBAR MOBILE ───────────────────────────────────────
-function toggleSidebar(){
-  document.getElementById('sidebar').classList.toggle('open');
-  document.getElementById('overlay').classList.toggle('show');
-}
-function closeSidebar(){
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('overlay').classList.remove('show');
 }
 
 // ─── CLOCK ───────────────────────────────────────────────
