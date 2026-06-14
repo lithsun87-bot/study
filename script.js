@@ -455,23 +455,6 @@ function markAllRevision(){
 }
 buildRevision();
 
-// ─── NOTES ───────────────────────────────────────────────
-let notes=[...notesData];
-function buildNotes(filter=''){
-  const grid=document.getElementById('notesGrid');
-  const filtered=filter?notes.filter(n=>n.title.toLowerCase().includes(filter.toLowerCase())||n.subject.toLowerCase().includes(filter.toLowerCase())):notes;
-  grid.innerHTML=filtered.map((n,i)=>`
-    <div class="note-card">
-      <div class="note-subject" style="color:${n.color}">${n.subject}</div>
-      <div class="note-title">${n.title}</div>
-      <div class="note-excerpt">${n.excerpt}</div>
-      <div class="note-footer">
-        <div>${n.tags.map(t=>`<span class="note-tag" style="margin-right:4px">${t}</span>`).join('')}</div>
-        <span>${n.date}</span>
-      </div>
-    </div>
-  `).join('');
-}
 function filterNotes(v){buildNotes(v)}
 function createNote(){
   const title=prompt('ชื่อ Note:');if(!title)return;
