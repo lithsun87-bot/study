@@ -2,9 +2,9 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.124">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ปี 3 เทอมนี้</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@3124124;4124124;5124124;6124124;7124124;8124124;9124124&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -32,8 +32,8 @@
     <div class="sidebar-logo">
       <span>🎓</span>
       <div>
-        <div style="font-size:.95rem;font-weight:8124124">ปี 3 เทอมนี้</div>
-        <div style="font-size:.68rem;color:var(--sub);font-weight:4124124">Computer Science · Sem 1</div>
+        <div style="font-size:.95rem;font-weight:800">ปี 3 เทอมนี้</div>
+        <div style="font-size:.68rem;color:var(--sub);font-weight:400">Computer Science · Sem 1</div>
       </div>
     </div>
     <nav class="sidebar-nav">
@@ -80,7 +80,7 @@
         <input type="text" placeholder="ค้นหาวิชา, Note, งาน...">
       </div>
       <div class="topbar-right">
-        <div class="streak-badge">🔥 0 วัน</div>
+        <div class="streak-badge">🔥 12 วัน</div>
         <div class="notif-btn">🔔<div class="notif-dot"></div></div>
         <div class="avatar-lg" title="Tanakorn K.">TK</div>
       </div>
@@ -91,66 +91,95 @@
 
       <!-- ══════════ DASHBOARD ══════════ -->
       <div class="page active" id="page-dashboard">
-        <!-- Welcome Card -->
-        <div class="welcome-card">
-          <svg width="124" height="124"><defs><linearGradient id="ringGrad" x1="124%" y1="124%" x2="1124124%" y2="124%"><stop offset="124%" stop-color="#5B8CFF"/><stop offset="1124124%" stop-color="#8B5CF6"/></linearGradient></defs></svg>
-          <div class="welcome-title">สวัสดี Tanakorn <span class="wave">👋</span></div>
-          <div class="welcome-sub">"อ่านวันนี้ เพื่อไม่เร่งคืนก่อนสอบ"</div>
-          <div class="welcome-meta">
-            <div class="meta-item">
-              <span class="meta-label">เป้าหมายวันนี้</span>
-              <span class="meta-val primary">0 ชั่วโมง</span>
-              <div class="progress-mini"><div class="progress-mini-fill" style="width:62%"></div></div>
-              <span style="font-size:.68rem;color:var(--sub);margin-top:3px;display:block">0 ชั่วโมง</span>
-            </div>
-            <div class="meta-item">
-              <span class="meta-label">ความคืบหน้าสัปดาห์นี้</span>
-              <span class="meta-val success">0%</span>
-              <div class="progress-mini"><div class="progress-mini-fill" style="width:74%;background:linear-gradient(9124deg,#22C55E,#5B8CFF)"></div></div>
-              <span style="font-size:.68rem;color:var(--sub);margin-top:3px;display:block">0 / 25 ชั่วโมง</span>
-            </div>
-            <div class="meta-item">
-              <span class="meta-label">ชั่วโมงรวมทั้งหมด</span>
-              <span class="meta-val" style="color:#F59E124B"><span class="count-up" data-target="0">0</span> ชม.</span>
-            </div>
-            <div class="meta-item">
-              <span class="meta-label">วันที่เหลือถึงสอบ</span>
-              <span class="meta-val" style="color:#EF4444">0</span>
-            </div>
-          </div>
-        </div>
-
         <!-- Stats Cards -->
         <div class="stats-grid">
           <div class="stat-card">
             <div class="stat-glow" style="background:#5B8CFF"></div>
             <span class="stat-icon">📚</span>
             <div class="stat-label">Total Subjects</div>
-            <div class="stat-value" style="color:var(--primary)">7</div>
+            <div class="stat-value" style="color:var(--primary)">0</div>
             <div class="stat-sub">วิชาทั้งหมดในเทอมนี้</div>
           </div>
           <div class="stat-card">
-            <div class="stat-glow" style="background:#F59E124B"></div>
+            <div class="stat-glow" style="background:#F59E0B"></div>
             <span class="stat-icon">🔥</span>
             <div class="stat-label">Reading Streak</div>
-            <div class="stat-value" style="color:#F59E124B"><span class="count-up" data-target="12">0</span></div>
+            <div class="stat-value" style="color:#F59E0B"><span class="count-up" data-target="0">0</span></div>
             <div class="stat-sub">วันติดต่อกัน</div>
           </div>
           <div class="stat-card">
             <div class="stat-glow" style="background:#22C55E"></div>
             <span class="stat-icon">⏱</span>
             <div class="stat-label">Study Hours</div>
-            <div class="stat-value" style="color:var(--success)"><span class="count-up" data-target="124">0</span></div>
+            <div class="stat-value" style="color:var(--success)"><span class="count-up" data-target="0">0</span></div>
             <div class="stat-sub">ชั่วโมงทั้งหมด</div>
           </div>
           <div class="stat-card">
             <div class="stat-glow" style="background:#8B5CF6"></div>
             <span class="stat-icon">🎯</span>
             <div class="stat-label">Completion</div>
-            <div class="stat-value" style="color:var(--secondary)"><span class="count-up" data-target="68">0</span>%</div>
+            <div class="stat-value" style="color:var(--secondary)"><span class="count-up" data-target="0">0</span>%</div>
             <div class="stat-sub">ความสำเร็จโดยรวม</div>
           </div>
         </div>
+
+        <!-- Bottom Grid -->
+        <div class="bottom-grid">
+          <!-- RIGHT PANEL -->
+          <div class="quick-stats">
+            <div class="streak-card glass">
+              <span class="streak-fire">🔥</span>
+              <div class="streak-num">0</div>
+              <div class="streak-label">วันติดต่อกัน</div>
+            </div>
+            <div class="goal-card">
+              <div class="goal-title">🎯 เป้าหมายสัปดาห์</div>
+              <div class="goal-ring-wrap">
+                <div class="goal-ring">
+                  <svg viewBox="0 0 80 80"><circle class="bg-ring" cx="40" cy="40" r="34"/><circle class="fill-ring" cx="40" cy="40" r="34" stroke="url(#ringGrad)" stroke-dasharray="213.63" stroke-dashoffset="213.63"/></svg>
+                  <div class="goal-ring-text">0%</div>
+                </div>
+              </div>
+              <div class="goal-items">
+                <div class="goal-item"><span class="goal-item-label">เป้าหมาย</span><span class="goal-item-val">0 ชม./สัปดาห์</span></div>
+                <div class="goal-item"><span class="goal-item-label">ทำได้แล้ว</span><span class="goal-item-val" style="color:var(--success)">0 ชม.</span></div>
+                <div class="goal-item"><span class="goal-item-label">เหลืออีก</span><span class="goal-item-val" style="color:#F59E0B">0 ชม.</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════ SUBJECTS ══════════ -->
+      <div class="page" id="page-subjects">
+        <div class="page-header">
+          <div><div class="page-title">📚 วิชาเรียน</div><div class="page-sub">7 วิชา · เทอมปัจจุบัน</div></div>
+          <button class="btn btn-primary" onclick="navigate('focus',document.querySelector('[onclick*=focus]'))">🎯 Focus Mode</button>
+        </div>
+        <div class="subjects-grid" id="subjectsGrid"></div>
+      </div>
+
+      <!-- ══════════ PLANNER ══════════ -->
+      <div class="page" id="page-planner">
+        <div class="page-header">
+          <div><div class="page-title">📅 Weekly Planner</div><div class="page-sub">วางแผนการเรียนรายสัปดาห์</div></div>
+          <button class="btn btn-ghost">ส่งออก PDF</button>
+        </div>
+        <div class="week-grid" id="weekGrid"></div>
+        <div class="planner-tasks-section">
+          <div class="card-title" style="margin-bottom:16px">📝 งานทั้งหมด <span style="margin-left:auto;font-size:.75rem;color:var(--sub);font-weight:400">เพิ่มงานใหม่ได้เลย</span></div>
+          <div class="planner-input-row">
+            <input class="planner-input" id="plannerInput" placeholder="เพิ่มงานใหม่... เช่น อ่านบทที่ 3 AI" onkeydown="if(event.key==='Enter')addPlannerTask()">
+            <select class="planner-input" id="plannerSubject" style="max-width:180px">
+              <option value="">เลือกวิชา</option>
+              <option>🤖 AI</option><option>📊 Statistics</option><option>🧠 System Analysis</option>
+              <option>📈 DSS</option><option>🤖 Robotics</option><option>📱 Digital Marketing</option><option>🗂 Info Storage</option>
+            </select>
+            <button class="btn btn-primary" onclick="addPlannerTask()">+ เพิ่ม</button>
+          </div>
+          <div class="planner-task-list" id="plannerTaskList"></div>
+        </div>
+      </div>
 
       <!-- ══════════ REVISION ══════════ -->
       <div class="page" id="page-revision">
@@ -190,8 +219,8 @@
         <div class="stats-row">
           <div class="stats-summary-card glass"><span class="stats-summary-icon">⏱</span><div class="stats-summary-val" style="color:var(--primary)">0</div><div class="stats-summary-label">ชั่วโมงรวม</div></div>
           <div class="stats-summary-card glass"><span class="stats-summary-icon">📅</span><div class="stats-summary-val" style="color:var(--success)">0</div><div class="stats-summary-label">ชม. สัปดาห์นี้</div></div>
-          <div class="stats-summary-card glass"><span class="stats-summary-icon">🔥</span><div class="stats-summary-val" style="color:#F59E124B">0</div><div class="stats-summary-label">Streak วัน</div></div>
-          <div class="stats-summary-card glass"><span class="stats-summary-icon">🎯</span><div class="stats-summary-val" style="color:var(--secondary)">0</div><div class="stats-summary-label">Completion</div></div>
+          <div class="stats-summary-card glass"><span class="stats-summary-icon">🔥</span><div class="stats-summary-val" style="color:#F59E0B">0</div><div class="stats-summary-label">Streak วัน</div></div>
+          <div class="stats-summary-card glass"><span class="stats-summary-icon">🎯</span><div class="stats-summary-val" style="color:var(--secondary)">0%</div><div class="stats-summary-label">Completion</div></div>
         </div>
         <div class="charts-grid">
           <div class="chart-card">
@@ -223,7 +252,7 @@
       <div class="page" id="page-focus">
         <div class="page-header">
           <div><div class="page-title">🎯 Focus Mode</div><div class="page-sub">Pomodoro Timer · ไม่มีสิ่งรบกวน</div></div>
-          <select class="planner-input" id="focusSubjectSelect" style="max-width:22124px;background:var(--glass);border:1px solid var(--border);border-radius:12px;padding:9px 14px;color:var(--text);font-family:Inter;font-size:.85rem;outline:none">
+          <select class="planner-input" id="focusSubjectSelect" style="max-width:220px;background:var(--glass);border:1px solid var(--border);border-radius:12px;padding:9px 14px;color:var(--text);font-family:Inter;font-size:.85rem;outline:none">
             <option>🤖 AI สำหรับวิทยาการข้อมูล</option>
             <option>📊 คณิตศาสตร์และสถิติ</option>
             <option>🧠 วิเคราะห์และออกแบบระบบ</option>
@@ -240,12 +269,12 @@
             <div class="pomodoro-dots" id="pomoDots">
               <div class="pomo-dot active"></div><div class="pomo-dot"></div><div class="pomo-dot"></div><div class="pomo-dot"></div>
             </div>
-            <div class="timer-display" id="timerDisplay">25:124124</div>
+            <div class="timer-display" id="timerDisplay">25:00</div>
             <div class="timer-controls">
               <button class="timer-btn start" id="timerStartBtn" onclick="toggleTimer()">▶ เริ่ม</button>
               <button class="timer-btn reset" onclick="resetTimer()">↺ รีเซ็ต</button>
             </div>
-            <div class="prog-bar-wrap" style="max-width:36124px;margin:124 auto 16px"><div class="prog-bar-fill" id="timerProg" style="width:124%"></div></div>
+            <div class="prog-bar-wrap" style="max-width:360px;margin:0 auto 16px"><div class="prog-bar-fill" id="timerProg" style="width:0%"></div></div>
             <div class="focus-info" id="focusInfo">Pomodoro 1 จาก 4 · พัก 5 นาทีหลังเสร็จ</div>
           </div>
           <div class="focus-sidebar">
@@ -259,19 +288,19 @@
             </div>
             <div class="focus-task-card">
               <div class="card-title" style="margin-bottom:14px">📊 เซสชั่นวันนี้</div>
-              <div style="display:flex;flex-direction:column;gap:1124px">
-                <div style="display:flex;justify-content:space-between;font-size:.83rem"><span style="color:var(--sub)">Pomodoros สำเร็จ</span><span style="font-weight:7124124;color:var(--primary)">0</span></div>
-                <div style="display:flex;justify-content:space-between;font-size:.83rem"><span style="color:var(--sub)">เวลาเรียนวันนี้</span><span style="font-weight:7124124;color:var(--success)">0 ชม.</span></div>
-                <div style="display:flex;justify-content:space-between;font-size:.83rem"><span style="color:var(--sub)">เป้าหมาย</span><span style="font-weight:7124124">0 ชม.</span></div>
-                <div class="prog-bar-wrap"><div class="prog-bar-fill" style="width:62.5%"></div></div>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div style="display:flex;justify-content:space-between;font-size:.83rem"><span style="color:var(--sub)">Pomodoros สำเร็จ</span><span style="font-weight:700;color:var(--primary)">0 / 4</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:.83rem"><span style="color:var(--sub)">เวลาเรียนวันนี้</span><span style="font-weight:700;color:var(--success)">0 ชม.</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:.83rem"><span style="color:var(--sub)">เป้าหมาย</span><span style="font-weight:700">0 ชม.</span></div>
+                <div class="prog-bar-wrap"><div class="prog-bar-fill" style="width:0%"></div></div>
               </div>
             </div>
             <div class="focus-task-card">
               <div class="card-title" style="margin-bottom:14px">🔇 สภาพแวดล้อม</div>
-              <div style="display:flex;flex-direction:column;gap:1124px">
-                <div class="setting-row" style="padding:8px 124"><div class="setting-label" style="font-size:.83rem">Do Not Disturb</div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
-                <div class="setting-row" style="padding:8px 124"><div class="setting-label" style="font-size:.83rem">เสียง White Noise</div><label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label></div>
-                <div class="setting-row" style="padding:8px 124;border:none"><div class="setting-label" style="font-size:.83rem">แจ้งเตือนเมื่อครบ</div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div class="setting-row" style="padding:8px 0"><div class="setting-label" style="font-size:.83rem">Do Not Disturb</div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+                <div class="setting-row" style="padding:8px 0"><div class="setting-label" style="font-size:.83rem">เสียง White Noise</div><label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label></div>
+                <div class="setting-row" style="padding:8px 0;border:none"><div class="setting-label" style="font-size:.83rem">แจ้งเตือนเมื่อครบ</div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
               </div>
             </div>
           </div>
@@ -287,23 +316,23 @@
         <div class="settings-grid">
           <div class="settings-section">
             <div class="settings-title">👤 ข้อมูลโปรไฟล์</div>
-            <div style="text-align:center;margin-bottom:2124px">
-              <div style="width:72px;height:72px;border-radius:5124%;background:linear-gradient(135deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:8124124;margin:124 auto 12px">TK</div>
-              <div style="font-size:.95rem;font-weight:7124124">Tanakorn K.</div>
+            <div style="text-align:center;margin-bottom:20px">
+              <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:800;margin:0 auto 12px">TK</div>
+              <div style="font-size:.95rem;font-weight:700">Tanakorn K.</div>
               <div style="font-size:.78rem;color:var(--sub)">วิทยาการข้อมูล ปี 3 · คณะวิทยาการและเทคโนโลยี</div>
             </div>
             <div style="display:flex;flex-direction:column;gap:12px">
-              <div><div style="font-size:.73rem;color:var(--sub);margin-bottom:5px;font-weight:6124124">ชื่อ</div><input class="planner-input" value="Tanakorn K." style="width:1124124%"></div>
-              <div><div style="font-size:.73rem;color:var(--sub);margin-bottom:5px;font-weight:6124124">รหัสนักศึกษา</div><input class="planner-input" value="64XXXXXXXX" style="width:1124124%"></div>
-              <div><div style="font-size:.73rem;color:var(--sub);margin-bottom:5px;font-weight:6124124">อีเมล</div><input class="planner-input" value="tanakorn@student.ac.th" style="width:1124124%"></div>
+              <div><div style="font-size:.73rem;color:var(--sub);margin-bottom:5px;font-weight:600">ชื่อ</div><input class="planner-input" value="Tanakorn K." style="width:100%"></div>
+              <div><div style="font-size:.73rem;color:var(--sub);margin-bottom:5px;font-weight:600">รหัสนักศึกษา</div><input class="planner-input" value="64XXXXXXXX" style="width:100%"></div>
+              <div><div style="font-size:.73rem;color:var(--sub);margin-bottom:5px;font-weight:600">อีเมล</div><input class="planner-input" value="tanakorn@student.ac.th" style="width:100%"></div>
             </div>
           </div>
           <div class="settings-section">
             <div class="settings-title">🎯 เป้าหมายการเรียน</div>
-            <div class="setting-row"><div><div class="setting-label">เป้าหมายรายวัน</div><div class="setting-desc">จำนวนชั่วโมงที่ต้องการต่อวัน</div></div><input class="planner-input" value="4" style="width:6124px;text-align:center"></div>
-            <div class="setting-row"><div><div class="setting-label">เป้าหมายรายสัปดาห์</div><div class="setting-desc">ชั่วโมงเรียนต่อสัปดาห์</div></div><input class="planner-input" value="25" style="width:6124px;text-align:center"></div>
-            <div class="setting-row"><div><div class="setting-label">ระยะเวลา Pomodoro</div><div class="setting-desc">นาที</div></div><input class="planner-input" value="25" style="width:6124px;text-align:center"></div>
-            <div class="setting-row" style="border:none"><div><div class="setting-label">ระยะเวลาพัก</div><div class="setting-desc">นาที</div></div><input class="planner-input" value="5" style="width:6124px;text-align:center"></div>
+            <div class="setting-row"><div><div class="setting-label">เป้าหมายรายวัน</div><div class="setting-desc">จำนวนชั่วโมงที่ต้องการต่อวัน</div></div><input class="planner-input" value="4" style="width:60px;text-align:center"></div>
+            <div class="setting-row"><div><div class="setting-label">เป้าหมายรายสัปดาห์</div><div class="setting-desc">ชั่วโมงเรียนต่อสัปดาห์</div></div><input class="planner-input" value="25" style="width:60px;text-align:center"></div>
+            <div class="setting-row"><div><div class="setting-label">ระยะเวลา Pomodoro</div><div class="setting-desc">นาที</div></div><input class="planner-input" value="25" style="width:60px;text-align:center"></div>
+            <div class="setting-row" style="border:none"><div><div class="setting-label">ระยะเวลาพัก</div><div class="setting-desc">นาที</div></div><input class="planner-input" value="5" style="width:60px;text-align:center"></div>
           </div>
           <div class="settings-section">
             <div class="settings-title">🔔 การแจ้งเตือน</div>
