@@ -54,10 +54,10 @@
   }
   
   /* ─── BACKGROUND BLOBS ─── */
-  .blob{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-  .blob1{width:600px;height:600px;background:radial-gradient(circle,#5B8CFF,transparent);top:-10%;left:-10%;animation-delay:0s}
-  .blob2{width:500px;height:500px;background:radial-gradient(circle,#8B5CF6,transparent);top:40%;right:-5%;animation-delay:-6s}
-  .blob3{width:400px;height:400px;background:radial-gradient(circle,#22C55E,transparent);bottom:-10%;left:30%;animation-delay:-12s}
+  .blobs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden} .blob{position:absolute;border-radius:50%;animation:blobFloat 18s ease-in-out infinite alternate}
+  .blob1{width:600px;height:600px;background:radial-gradient(circle,#5B8CFF,transparent);top:-10%;left:-10%;animation-delay:0s;filter:blur(120px);opacity:0.12;border-radius:50%}
+  .blob2{width:500px;height:500px;background:radial-gradient(circle,#8B5CF6,transparent);top:40%;right:-5%;animation-delay:-6s;filter:blur(120px);opacity:0.12;border-radius:50%}
+  .blob3{width:400px;height:400px;background:radial-gradient(circle,#22C55E,transparent);bottom:-10%;left:30%;animation-delay:-12s;filter:blur(120px);opacity:0.12;border-radius:50%}
   @keyframes blobFloat{0%{transform:translate(0,0) scale(1)}100%{transform:translate(40px,30px) scale(1.08)}}
 
   /* ─── LAYOUT ─── */
