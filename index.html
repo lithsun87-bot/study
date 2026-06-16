@@ -203,56 +203,77 @@
         </div>
       </div>
 
-      <!-- ══════════ NOTES ══════════ -->
-      <div class="page" id="page-notes">
-        <div class="page-header">
-          <div><div class="page-title">📝 Notes</div><div class="page-sub">บันทึกย่อและสรุปเนื้อหา</div></div>
-          <button class="btn btn-primary" onclick="createNote()">+ สร้าง Note</button>
-        </div>
-        <div class="notes-toolbar">
-          <div class="notes-search"><span style="color:var(--sub)">🔍</span><input type="text" placeholder="ค้นหา Note..." oninput="filterNotes(this.value)"></div>
-          <button class="btn btn-ghost" style="white-space:nowrap">🗂 ทั้งหมด</button>
-          <button class="btn btn-ghost" style="white-space:nowrap">⭐ Starred</button>
-        </div>
-        <div class="notes-grid" id="notesGrid"></div>
-      </div>
+     <!-- ══════════ NOTES ══════════ -->
+<div class="page" id="page-notes">
 
-      <!-- ══════════ STATISTICS ══════════ -->
-      <div class="page" id="page-stats">
-        <div class="page-header">
-          <div><div class="page-title">📊 Statistics</div><div class="page-sub">ภาพรวมความคืบหน้าการเรียน</div></div>
-        </div>
-        <div class="stats-row">
-          <div class="stats-summary-card glass"><span class="stats-summary-icon">⏱</span><div class="stats-summary-val" style="color:var(--primary)">0</div><div class="stats-summary-label">ชั่วโมงรวม</div></div>
-          <div class="stats-summary-card glass"><span class="stats-summary-icon">📅</span><div class="stats-summary-val" style="color:var(--success)">0</div><div class="stats-summary-label">ชม. สัปดาห์นี้</div></div>
-          <div class="stats-summary-card glass"><span class="stats-summary-icon">🔥</span><div class="stats-summary-val" style="color:#F59E0B">0</div><div class="stats-summary-label">Streak วัน</div></div>
-          <div class="stats-summary-card glass"><span class="stats-summary-icon">🎯</span><div class="stats-summary-val" style="color:var(--secondary)">0%</div><div class="stats-summary-label">Completion</div></div>
-        </div>
-        <div class="charts-grid">
-          <div class="chart-card">
-            <div class="chart-title">📈 ชั่วโมงเรียนรายสัปดาห์</div>
-            <div class="chart-sub">7 วันล่าสุด</div>
-            <div class="chart-wrap"><canvas id="weeklyChart"></canvas></div>
-          </div>
-          <div class="chart-card">
-            <div class="chart-title">📊 Completion รายวิชา</div>
-            <div class="chart-sub">ความคืบหน้าแต่ละวิชา</div>
-            <div class="chart-wrap"><canvas id="subjectChart"></canvas></div>
-          </div>
-        </div>
-        <div class="charts-grid">
-          <div class="chart-card">
-            <div class="chart-title">📆 ชั่วโมงเรียนรายเดือน</div>
-            <div class="chart-sub">4 เดือนล่าสุด</div>
-            <div class="chart-wrap"><canvas id="monthlyChart"></canvas></div>
-          </div>
-          <div class="chart-card">
-            <div class="chart-title">🔥 Study Streak</div>
-            <div class="chart-sub">กิจกรรมรายวัน 4 สัปดาห์</div>
-            <div class="chart-wrap"><canvas id="streakChart"></canvas></div>
-          </div>
-        </div>
+  <!-- Header -->
+  <div class="page-header">
+    <div>
+      <div class="page-title">📝 Notes</div>
+      <div class="page-sub">จัดเก็บความรู้ของคุณในทุกวิชา</div>
+    </div>
+    <button class="btn btn-primary" onclick="createNote()">+ New Note</button>
+  </div>
+
+  <!-- Stat Row -->
+  <div class="notes-stat-row">
+    <div class="notes-stat-card">
+      <span class="notes-stat-icon" style="background:rgba(91,140,255,0.15)">📋</span>
+      <div class="notes-stat-val" id="noteCountTotal">0</div>
+      <div class="notes-stat-lbl">Notes<br><span>โน้ตทั้งหมด</span></div>
+    </div>
+    <div class="notes-stat-card">
+      <span class="notes-stat-icon" style="background:rgba(139,92,246,0.15)">📁</span>
+      <div class="notes-stat-val" id="noteCountSubject">0</div>
+      <div class="notes-stat-lbl">Subjects<br><span>วิชาที่มีโน้ต</span></div>
+    </div>
+    <div class="notes-stat-card">
+      <span class="notes-stat-icon" style="background:rgba(245,158,11,0.15)">⭐</span>
+      <div class="notes-stat-val" id="noteCountFav">0</div>
+      <div class="notes-stat-lbl">Favorites<br><span>โน้ตปักหมุด</span></div>
+    </div>
+    <!-- Quick Note -->
+    <div class="quick-note-card">
+      <div class="quick-note-label">⚡ Quick Note</div>
+      <textarea id="quickNoteInput" placeholder="จดอะไรสั้นๆ ได้ที่นี่..."></textarea>
+      <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:6px">
+        <button class="btn btn-primary btn-sm" onclick="saveQuickNote()">Save</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Filter Tabs + Search -->
+  <div class="notes-toolbar">
+    <div id="notesFilterTabs" class="notes-filter-tabs"></div>
+    <div class="notes-search">
+      <span style="color:var(--sub)">🔍</span>
+      <input id="noteSearchInput" type="text"
+        placeholder="ค้นหาโน้ต..." oninput="filterNotes(this.value)">
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="notes-grid" id="notesGrid"></div>
+
+  <!-- Detail Panel (slide จากขวา) -->
+  <div class="note-detail-panel" id="noteDetailPanel">
+    <div class="note-panel-topbar">
+      <span id="detailCourse" style="font-size:.8rem;font-weight:700"></span>
+      <button onclick="closeNoteDetail()"
+        style="background:none;border:none;color:var(--sub);font-size:1.2rem;cursor:pointer;line-height:1">✕</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:4px">
+      <h2 id="detailTitle" style="font-size:1.1rem;font-weight:800"></h2>
+      <button id="detailPinBtn" onclick="toggleDetailPin()"
+        style="background:none;border:none;font-size:1.2rem;cursor:pointer">🔖</button>
+    </div>
+    <div id="detailMeta"
+      style="font-size:.72rem;color:var(--sub);margin-bottom:16px"></div>
+    <div id="detailContent"
+      style="font-size:.84rem;color:var(--sub);line-height:1.8"></div>
+  </div>
+
+</div>
 
       <!-- ══════════ FOCUS MODE ══════════ -->
       <div class="page" id="page-focus">

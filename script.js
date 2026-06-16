@@ -166,27 +166,148 @@ buildRevision();
 
 // ─── NOTES ───────────────────────────────────────────────
 let notes=[...notesData];
+let activeNoteSubject = 'all';
+let activeNoteID = null;
+
 function buildNotes(filter=''){
-  const grid=document.getElementById('notesGrid');
-  const filtered=filter?notes.filter(n=>n.title.toLowerCase().includes(filter.toLowerCase())||n.subject.toLowerCase().includes(filter.toLowerCase())):notes;
-  grid.innerHTML=filtered.map((n,i)=>`
-    <div class="note-card">
-      <div class="note-subject" style="color:${n.color}">${n.subject}</div>
+  buildNotesFilterTabs();
+
+  let filtered = notes.filter(n => {
+    const matchSubject = activeNoteSubject === 'all' || n.subject === activeNoteSubject;
+    const matchSearch  = !filter ||
+      n.title.toLowerCase().includes(filter.toLowerCase()) ||
+      n.subject.toLowerCase().includes(filter.toLowerCase());
+    return matchSubject && matchSearch;
+  });
+
+  const grid = document.getElementById('notesGrid');
+  if (!filtered.length) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--sub)">ยังไม่มีโน้ต</div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map((n) => `
+    <div class="note-card" onclick="openNoteDetail(${notes.indexOf(n)})">
+      <div class="note-card-header">
+        <div class="note-subject-icon" style="background:${n.color}22">${n.icon || '📄'}</div>
+        <button class="note-fav-btn ${n.fav ? 'active' : ''}"
+          onclick="event.stopPropagation(); toggleNoteFav(${notes.indexOf(n)})">★</button>
+      </div>
       <div class="note-title">${n.title}</div>
+      <div class="note-subject" style="color:${n.color}">${n.subject}</div>
       <div class="note-excerpt">${n.excerpt}</div>
       <div class="note-footer">
-        <div>${n.tags.map(t=>`<span class="note-tag" style="margin-right:4px">${t}</span>`).join('')}</div>
-        <span>${n.date}</span>
+        <div>${(n.tags||[]).map(t => `<span class="note-tag">${t}</span>`).join('')}</div>
+        <span class="note-date">${n.date}</span>
       </div>
     </div>
   `).join('');
+
+  document.getElementById('noteCountTotal').textContent = notes.length;
+  document.getElementById('noteCountFav').textContent   = notes.filter(n => n.fav).length;
 }
-function filterNotes(v){buildNotes(v);}
-function createNote(){
-  const title=prompt('ชื่อ Note:');if(!title)return;
-  notes.unshift({subject:'📝 Note',color:'#94A3B8',title,excerpt:'คลิกเพื่อแก้ไข...',date:'วันนี้',tags:['New']});
+
+function buildNotesFilterTabs() {
+  const bar = document.getElementById('notesFilterTabs');
+  if (!bar) return;
+  const uniqueSubjects = [...new Set(notes.map(n => n.subject))];
+  bar.innerHTML = `
+    <button class="tab-pill ${activeNoteSubject === 'all' ? 'active' : ''}"
+      onclick="setNoteSubject('all', this)">All Notes</button>
+    ${uniqueSubjects.map(s => `
+      <button class="tab-pill ${activeNoteSubject === s ? 'active' : ''}"
+        onclick="setNoteSubject('${s}', this)">${s}</button>
+    `).join('')}
+  `;
+}
+
+function setNoteSubject(s, el) {
+  activeNoteSubject = s;
+  document.querySelectorAll('#notesFilterTabs .tab-pill').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  buildNotes(document.getElementById('noteSearchInput')?.value || '');
+}
+
+function filterNotes(v) { buildNotes(v); }
+
+function toggleNoteFav(i) {
+  notes[i].fav = !notes[i].fav;
   buildNotes();
 }
+
+function openNoteDetail(i) {
+  const n = notes[i];
+  activeNoteId = i;
+  document.getElementById('detailCourse').textContent  = n.subject;
+  document.getElementById('detailCourse').style.color  = n.color;
+  document.getElementById('detailTitle').textContent   = n.title;
+  document.getElementById('detailMeta').textContent    = `Last edited: ${n.date}`;
+  document.getElementById('detailPinBtn').textContent  = n.fav ? '📌' : '🔖';
+  document.getElementById('detailContent').innerHTML   = renderNoteContent(n.body || n.excerpt || '');
+  document.getElementById('noteDetailPanel').classList.add('open');
+}
+
+function closeNoteDetail() {
+  document.getElementById('noteDetailPanel').classList.remove('open');
+  activeNoteId = null;
+}
+
+function toggleDetailPin() {
+  if (activeNoteId === null) return;
+  notes[activeNoteId].fav = !notes[activeNoteId].fav;
+  document.getElementById('detailPinBtn').textContent = notes[activeNoteId].fav ? '📌' : '🔖';
+  buildNotes();
+}
+
+function renderNoteContent(text) {
+  return text
+    .replace(/```(\w*)\n?([\s\S]*?)```/g, (_, lang, code) => `
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">${lang || 'code'}</span>
+          <button class="copy-btn" onclick="copyCode(this)">📋</button>
+        </div>
+        <pre><code>${escapeHtml(code.trim())}</code></pre>
+      </div>`)
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/^## (.+)/gm, '<div class="note-h2">$1</div>')
+    .replace(/^- (.+)/gm, '<div class="note-li">• $1</div>')
+    .replace(/\n/g, '<br>');
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function copyCode(btn) {
+  navigator.clipboard.writeText(btn.closest('.code-block').querySelector('code').textContent);
+  btn.textContent = '✓';
+  setTimeout(() => btn.textContent = '📋', 1500);
+}
+
+function saveQuickNote() {
+  const el = document.getElementById('quickNoteInput');
+  if (!el || !el.value.trim()) return;
+  notes.unshift({
+    subject: '⚡ Quick', color: '#94A3B8', icon: '⚡',
+    title: 'Quick Note', excerpt: el.value.trim(),
+    body: el.value.trim(), tags: ['quick'], date: 'วันนี้', fav: false
+  });
+  el.value = '';
+  buildNotes();
+}
+
+function createNote() {
+  const title = prompt('ชื่อ Note:');
+  if (!title) return;
+  notes.unshift({
+    subject: '📝 Note', color: '#94A3B8', icon: '📝',
+    title, excerpt: 'คลิกเพื่อแก้ไข...', body: '',
+    tags: ['New'], date: 'วันนี้', fav: false
+  });
+  buildNotes();
+}
+
 buildNotes();
 
 // ─── CHARTS ──────────────────────────────────────────────
